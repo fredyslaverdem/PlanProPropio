@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2F5596"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageViewLogoLogin"
+        android:layout_width="137dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/Logo"
+        android:src="@drawable/bloc_notes_2__1_"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPlanProLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="416dp"
+        android:layout_marginBottom="37dp"
+        android:fontFamily="@font/jsmath_cmti10"
+        android:text="@string/planpro"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/viewRectanguloLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLogoLogin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.854" />
+
+    <View
+        android:id="@+id/viewRectanguloLogin"
+        android:layout_width="match_parent"
+        android:layout_height="285dp"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992" />
+
+    <TextView
+        android:id="@+id/textViewUsernameOcorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/usernameocorreo"
+        android:textColor="#575757"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUserCorreoLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewRectanguloLogin"
+        app:layout_constraintVertical_bias="0.415" />
+
+    <EditText
+        android:id="@+id/editTextUserCorreoLogin"
+        android:layout_width="246dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/ingresaruserocorreo"
+        android:inputType="text"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewRectanguloLogin"
+        app:layout_constraintVertical_bias="0.302" />
+
+    <TextView
+        android:id="@+id/textViewPasswordLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/password"
+        android:textColor="#575757"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewRectanguloLogin"
+        app:layout_constraintVertical_bias="0.509" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="246dp"
+        android:layout_height="48dp"
+        android:autofillHints="Password"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/ingresa_tu_contraseña"
+        android:inputType="textPassword"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewRectanguloLogin"
+        app:layout_constraintVertical_bias="0.302" />
+
+    <Button
+        android:id="@+id/buttonIniciarSesionLogin"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#2F5596"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/iniciarsesion"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewRectanguloLogin"
+        app:layout_constraintEnd_toEndOf="@+id/viewRectanguloLogin"
+        app:layout_constraintStart_toStartOf="@+id/viewRectanguloLogin"
+        app:layout_constraintTop_toTopOf="@+id/viewRectanguloLogin" />
+
+    <TextView
+        android:id="@+id/textViewOlvidastePerdisteLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/olvidastetucontraseña"
+        android:textColor="#575757"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewRectanguloLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesionLogin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewRegistroLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:textColor="#575757"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewRectanguloLogin"
+        app:layout_constraintEnd_toEndOf="@+id/viewRectanguloLogin"
+        app:layout_constraintStart_toStartOf="@+id/viewRectanguloLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOlvidastePerdisteLogin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

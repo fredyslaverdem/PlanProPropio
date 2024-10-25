@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">PlanProPropio</string>
+    <string name="Logo">Logo de la app</string>
+    <string name="Loading">Loading...</string>
+    <string name="planpro">PlanPro</string>
+    <string name="usernameocorreo">Username o Correo</string>
+    <string name="ingresaruserocorreo">Ingresar username o correo</string>
+    <string name="password">Password</string>
+    <string name="ingresa_tu_contraseña">Ingresa tu contraseña</string>
+    <string name="iniciarsesion">Iniciar sesión</string>
+    <string name="olvidastetucontraseña">¿olvidaste o perdiste tu contrseña?</string>
+    <string name="recuperarcontraseña">RECUPERAR CONTRSEÑA</string>
+    <string name="correo">Correo</string>
+    <string name="ingresarcorreo">Ingresar correo</string>
+    <string name="enviar">Enviar</string>
 </resources>
