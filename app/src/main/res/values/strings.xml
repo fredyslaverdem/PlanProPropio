@@ -13,4 +13,9 @@
     <string name="correo">Correo</string>
     <string name="ingresarcorreo">Ingresar correo</string>
     <string name="enviar">Enviar</string>
+    <string name="crearusername">Crear Username</string>
+    <string name="crearpassword">Crear Password</string>
+    <string name="confirmarpassword">Confirmar Password</string>
+    <string name="crearcuenta">Crear Cuenta</string>
+    <string name="confirma_tu_contraseña">Confirma tu contraseña</string>
 </resources>
