@@ -9,17 +9,26 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
+import android.util.Patterns
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
 
-    // Definimos la variable para firebase
+    // Definimos la variables para firebase y funcionalidad de la vista
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+    private lateinit var editTextCorreoUsuario: EditText
+    private lateinit var editTextPassword: EditText
+    private lateinit var buttonIniciarSesion: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,8 +80,62 @@ class LoginActivity : AppCompatActivity() {
 
 
         // configuración para la base de datos y funcionalidad con los botones y edittext
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+        editTextCorreoUsuario = findViewById(R.id.editTextUserCorreoLogin)
+        editTextPassword = findViewById(R.id.editTextPasswordLogin)
+        buttonIniciarSesion = findViewById(R.id.buttonIniciarSesionLogin)
 
+        buttonIniciarSesion.setOnClickListener {
+            val correoUsuario = editTextCorreoUsuario.text.toString()
+            val password = editTextPassword.text.toString()
+
+            if (correoUsuario.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            // Verificamos si el campo es un correo
+            if (Patterns.EMAIL_ADDRESS.matcher(correoUsuario).matches()) {
+                iniciarSesionConCorreo(correoUsuario, password)
+            } else {
+                buscarCorreoPorUsuario(correoUsuario, password)
+            }
+
+        }
 
 
     }
+    // Función para iniciar sesión con correo electrónico
+    private fun iniciarSesionConCorreo(correo: String, password: String) {
+        auth.signInWithEmailAndPassword(correo, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this,"Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+    // Función para buscar el correo por el nombre de usuario
+    private fun buscarCorreoPorUsuario(usuario: String, password: String) {
+        db.collection("usuarios")
+            .whereEqualTo("usuario", usuario)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val correo = documents.documents[0].getString("correo") ?: ""
+                    iniciarSesionConCorreo(correo, password)
+                } else {
+                    Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al buscar el Usuario: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 }
