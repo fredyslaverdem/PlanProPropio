@@ -8,12 +8,23 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class RecuperarActivity : AppCompatActivity() {
+
+    // Definimos variables para gestion del cambio
+
+    private lateinit var editTextCorreo : EditText
+    private lateinit var buttonEnviar : Button
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recuperar)
@@ -47,5 +58,34 @@ class RecuperarActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Configuramos la gestión para que se haga el cambio de contraseña
+
+        editTextCorreo = findViewById(R.id.editTextUserCorreoRecuperar)
+        buttonEnviar = findViewById(R.id.buttonEnviarRecuperar)
+        auth = FirebaseAuth.getInstance()
+
+        buttonEnviar.setOnClickListener {
+            val correo = editTextCorreo.text.toString().trim()
+            if (correo.isEmpty()) {
+                Toast.makeText(this, "Por favor ingrese su correo", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            enviarCorreoRecuperar(correo)
+        }
+
+
+    }
+
+    // Funcioón para enviar el correo de cambio de contraseña
+    private fun enviarCorreoRecuperar(correo : String){
+        auth.sendPasswordResetEmail(correo)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Correo de cambio de contraseña enviado, verifique su bandeja de entrada", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Error al enviar correo: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 }
