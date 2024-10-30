@@ -68,10 +68,10 @@ class RegistroActivity : AppCompatActivity () {
         val buttonCrearCuenta = findViewById<TextView>(R.id.buttonCrearCuentaRegistro)
 
         buttonCrearCuenta.setOnClickListener {
-            val correo = editTextCorreo.text.toString()
-            val usuario = edittextUsuario.text.toString()
-            val password = editTextPassword.text.toString()
-            val confirmarPassword = editTextConfirmarPassword.text.toString()
+            val correo = editTextCorreo.text.toString().trim()
+            val usuario = edittextUsuario.text.toString().trim()
+            val password = editTextPassword.text.toString().trim()
+            val confirmarPassword = editTextConfirmarPassword.text.toString().trim()
 
             if (correo.isEmpty() && usuario.isEmpty() && password.isEmpty() && confirmarPassword.isEmpty()) {
                 Toast.makeText(this, "Todos los campos son obligaotrios", Toast.LENGTH_SHORT).show()
@@ -88,41 +88,80 @@ class RegistroActivity : AppCompatActivity () {
                 return@setOnClickListener
             }
 
-            // Crear el usuario en Firebase
-            auth.createUserWithEmailAndPassword(correo, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Registro exitoso
-                        val userId = auth.currentUser?.uid
-                        val userData = hashMapOf(
-                            "correo" to correo,
-                            "usuario" to usuario
-                        )
-                        userId?.let {
-                            db.collection("usuarios").document(it)
-                                .set(userData)
-                                .addOnSuccessListener {
-                                    Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this, LoginActivity::class.java)
-                                    startActivity(intent)
-                                }
-                                .addOnFailureListener { e ->
-                                    Toast.makeText(this, "Error al guardar los datos: ${e.message}", Toast.LENGTH_SHORT).show()
-                                }
-                        }
 
-                    } else {
-                        // Error en el registro
-                        Toast.makeText(this, "Error en el registro: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                    }
+            // Verificar si el usuario ya existe en la base de datos
+            verificarUsuarioExistente(usuario) { existe, error ->
+                if (error != null) {
+                    Toast.makeText(
+                        this,
+                        "Error al verificar el usuario: $error",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (existe) {
+                    Toast.makeText(
+                        this,
+                        "El usuario ya existe, elige otro nombre",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    // Crear el usuario en Firebase si no existe
+                    auth.createUserWithEmailAndPassword(correo, password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Registro exitoso
+                                val userId = auth.currentUser?.uid
+                                val userData = hashMapOf(
+                                    "correo" to correo,
+                                    "usuario" to usuario
+                                )
+                                userId?.let {
+                                    db.collection("usuarios").document(it)
+                                        .set(userData)
+                                        .addOnSuccessListener {
+                                            Toast.makeText(
+                                                this,
+                                                "Registro exitoso",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                            val intent = Intent(this, LoginActivity::class.java)
+                                            startActivity(intent)
+                                            finish()
+                                        }
+                                        .addOnFailureListener { e ->
+                                            Toast.makeText(
+                                                this,
+                                                "Error al guardar los datos: ${e.message}",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                }
+
+                            } else {
+                                // Error en el registro
+                                Toast.makeText(
+                                    this,
+                                    "Error en el registro: ${task.exception?.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
                 }
 
-
+            }
         }
 
 
-
-
-
+    }
+    // Función para verificar si el usuario ya existe
+    private fun verificarUsuarioExistente(usuario: String, onComplete: (Boolean, String?) -> Unit) {
+        db.collection("usuarios")
+            .whereEqualTo("usuario", usuario)
+            .get()
+            .addOnSuccessListener { documents ->
+                onComplete(!documents.isEmpty, null)
+            }
+            .addOnFailureListener { e ->
+                onComplete(false, e.message)
+            }
     }
 }

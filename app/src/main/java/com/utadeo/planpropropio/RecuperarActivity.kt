@@ -67,11 +67,20 @@ class RecuperarActivity : AppCompatActivity() {
         buttonEnviar.setOnClickListener {
             val correo = editTextCorreo.text.toString().trim()
             if (correo.isEmpty()) {
-                Toast.makeText(this, "Por favor ingrese su correo", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                // Toast personalizado monstrando el nensaje de correo vacío
+                val inflaterCorreoVacio = layoutInflater
+                val layoutCorreoVacio = inflaterCorreoVacio.inflate(R.layout.toast_personalizado, findViewById(R.id.customToast))
+                val textViewCorreoVacioRecuperar = layoutCorreoVacio.findViewById<TextView>(R.id.text)
+                textViewCorreoVacioRecuperar.text = getString(R.string.ingresarcorreo)
 
-            enviarCorreoRecuperar(correo)
+                val toastCorreoVacioRecuperar = Toast(applicationContext)
+                toastCorreoVacioRecuperar.duration = Toast.LENGTH_LONG
+                toastCorreoVacioRecuperar.view = layoutCorreoVacio
+                toastCorreoVacioRecuperar.show()
+
+            } else {
+                enviarCorreoRecuperar(correo)
+            }
         }
 
 
@@ -82,10 +91,26 @@ class RecuperarActivity : AppCompatActivity() {
         auth.sendPasswordResetEmail(correo)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Correo de cambio de contraseña enviado, verifique su bandeja de entrada", Toast.LENGTH_SHORT).show()
+                    // Toast personalizado mostrando el mensaje de correo enviado
+                    val inflaterCorreoEnviado = layoutInflater
+                    val layoutCorreoEnviado = inflaterCorreoEnviado.inflate(R.layout.toast_personalizado, findViewById(R.id.customToast))
+                    val textViewCorreoEnviadoRecuperar = layoutCorreoEnviado.findViewById<TextView>(R.id.text)
+                    textViewCorreoEnviadoRecuperar.text = getString(R.string.correoenviadorecuperar)
+
+                    val toastCorreoEnviadoRecuperar = Toast(applicationContext)
+                    toastCorreoEnviadoRecuperar.duration = Toast.LENGTH_LONG
+                    toastCorreoEnviadoRecuperar.view = layoutCorreoEnviado
+                    toastCorreoEnviadoRecuperar.show()
+
+
+                    // Ir a la vista de login
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(this, "Error al enviar correo: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
+
 }

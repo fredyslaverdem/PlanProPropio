@@ -87,8 +87,8 @@ class LoginActivity : AppCompatActivity() {
         buttonIniciarSesion = findViewById(R.id.buttonIniciarSesionLogin)
 
         buttonIniciarSesion.setOnClickListener {
-            val correoUsuario = editTextCorreoUsuario.text.toString()
-            val password = editTextPassword.text.toString()
+            val correoUsuario = editTextCorreoUsuario.text.toString().trim()
+            val password = editTextPassword.text.toString().trim()
 
             if (correoUsuario.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
@@ -111,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, HomeActivity::class.java)
+                    val intent = Intent(this, CargaActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
@@ -122,19 +122,25 @@ class LoginActivity : AppCompatActivity() {
     // Función para buscar el correo por el nombre de usuario
     private fun buscarCorreoPorUsuario(usuario: String, password: String) {
         db.collection("usuarios")
-            .whereEqualTo("usuario", usuario)
+            .whereEqualTo("usuario", usuario) // Asegúrate de que este campo sea correcto
             .get()
             .addOnSuccessListener { documents ->
-                if (!documents.isEmpty) {
-                    val correo = documents.documents[0].getString("correo") ?: ""
-                    iniciarSesionConCorreo(correo, password)
-                } else {
+                if (documents.isEmpty) {
+                    // Si no se encuentra el documento
                     Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Si se encuentra, obtener el correo
+                    val correo = documents.documents[0].getString("correo")
+                    if (correo != null) {
+                        iniciarSesionConCorreo(correo, password)
+                    } else {
+                        Toast.makeText(this, "Error: Correo no encontrado", Toast.LENGTH_SHORT).show()
+                    }
                 }
-
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error al buscar el Usuario: ${e.message}", Toast.LENGTH_SHORT).show()
+                // Manejar el error al buscar el usuario
+                Toast.makeText(this, "Error al buscar el usuario: ${e.message}", Toast.LENGTH_LONG).show()
             }
     }
 

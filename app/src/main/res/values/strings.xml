@@ -18,4 +18,5 @@
     <string name="confirmarpassword">Confirmar Password</string>
     <string name="crearcuenta">Crear Cuenta</string>
     <string name="confirma_tu_contraseña">Confirma tu contraseña</string>
+    <string name="correoenviadorecuperar">Correo de cambio de contraseña enviado, verifique su bandeja de entrada.</string>
 </resources>
