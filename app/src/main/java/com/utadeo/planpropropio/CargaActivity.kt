@@ -15,7 +15,7 @@ class CargaActivity : AppCompatActivity() {
 
         // Configura un retraso
         Handler().postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }, 1000)
