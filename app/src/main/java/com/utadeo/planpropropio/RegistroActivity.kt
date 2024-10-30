@@ -73,7 +73,7 @@ class RegistroActivity : AppCompatActivity () {
             val password = editTextPassword.text.toString().trim()
             val confirmarPassword = editTextConfirmarPassword.text.toString().trim()
 
-            if (correo.isEmpty() && usuario.isEmpty() && password.isEmpty() && confirmarPassword.isEmpty()) {
+            if (correo.isEmpty() || usuario.isEmpty() || password.isEmpty() || confirmarPassword.isEmpty()) {
                 toastPerzonalizado(this, "Todos los campos son obligaotrios")
                 return@setOnClickListener
             }
