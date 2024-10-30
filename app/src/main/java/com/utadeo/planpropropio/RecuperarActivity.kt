@@ -115,6 +115,7 @@ class RecuperarActivity : AppCompatActivity() {
             }
             .addOnFailureListener { e ->
                 // Manejar el error al buscar el usuario
+                toastPerzonalizado(this, "Error al verificar el correo: ${e.message}")
                 onResultado(false)
             }
     }
