@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class RecuperarActivity : AppCompatActivity() {
 
@@ -24,6 +26,7 @@ class RecuperarActivity : AppCompatActivity() {
     private lateinit var editTextCorreo : EditText
     private lateinit var buttonEnviar : Button
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,27 +66,23 @@ class RecuperarActivity : AppCompatActivity() {
         editTextCorreo = findViewById(R.id.editTextUserCorreoRecuperar)
         buttonEnviar = findViewById(R.id.buttonEnviarRecuperar)
         auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         buttonEnviar.setOnClickListener {
             val correo = editTextCorreo.text.toString().trim()
             if (correo.isEmpty()) {
                 // Toast personalizado monstrando el nensaje de correo vacío
-                val inflaterCorreoVacio = layoutInflater
-                val layoutCorreoVacio = inflaterCorreoVacio.inflate(R.layout.toast_personalizado, findViewById(R.id.customToast))
-                val textViewCorreoVacioRecuperar = layoutCorreoVacio.findViewById<TextView>(R.id.text)
-                textViewCorreoVacioRecuperar.text = getString(R.string.ingresarcorreo)
-
-                val toastCorreoVacioRecuperar = Toast(applicationContext)
-                toastCorreoVacioRecuperar.duration = Toast.LENGTH_LONG
-                toastCorreoVacioRecuperar.view = layoutCorreoVacio
-                toastCorreoVacioRecuperar.show()
-
+                toastPerzonalizado(this, getString(R.string.ingresarcorreo))
             } else {
-                enviarCorreoRecuperar(correo)
+                verificarCorreoRegistrado(correo) { correoExiste ->
+                    if (correoExiste) {
+                        enviarCorreoRecuperar(correo)
+                    } else {
+                        toastPerzonalizado(this, "El correo es Incorrecto o no esta Registrado")
+                    }
+                }
             }
         }
-
-
     }
 
     // Funcioón para enviar el correo de cambio de contraseña
@@ -92,25 +91,31 @@ class RecuperarActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Toast personalizado mostrando el mensaje de correo enviado
-                    val inflaterCorreoEnviado = layoutInflater
-                    val layoutCorreoEnviado = inflaterCorreoEnviado.inflate(R.layout.toast_personalizado, findViewById(R.id.customToast))
-                    val textViewCorreoEnviadoRecuperar = layoutCorreoEnviado.findViewById<TextView>(R.id.text)
-                    textViewCorreoEnviadoRecuperar.text = getString(R.string.correoenviadorecuperar)
-
-                    val toastCorreoEnviadoRecuperar = Toast(applicationContext)
-                    toastCorreoEnviadoRecuperar.duration = Toast.LENGTH_LONG
-                    toastCorreoEnviadoRecuperar.view = layoutCorreoEnviado
-                    toastCorreoEnviadoRecuperar.show()
-
+                    toastPerzonalizado(this, getString(R.string.correoenviadorecuperar))
 
                     // Ir a la vista de login
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Error al enviar correo: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    toastPerzonalizado(this, "Error al enviar correo: ${task.exception?.message}")
                 }
             }
     }
 
+    // Función para vefificar si el usuario existe en la base de datos
+    private fun verificarCorreoRegistrado(correo: String, onResultado: (Boolean) -> Unit){
+        // Consultamos si existe en firestore
+        db.collection("usuarios")
+            .whereEqualTo("correo", correo)
+            .get()
+            .addOnSuccessListener { documents ->
+                // Si encuentra almenos un documento el correo existe
+                onResultado(!documents.isEmpty)
+            }
+            .addOnFailureListener { e ->
+                // Manejar el error al buscar el usuario
+                onResultado(false)
+            }
+    }
 }

@@ -91,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
             val password = editTextPassword.text.toString().trim()
 
             if (correoUsuario.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                toastPerzonalizado(this, "Completa todos los campos")
                 return@setOnClickListener
             }
             // Verificamos si el campo es un correo
@@ -110,12 +110,12 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    toastPerzonalizado(this, "Inicio de sesión exitoso")
                     val intent = Intent(this, CargaActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this,"Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    toastPerzonalizado(this, "Error en el inicio de sesión: ${task.exception?.message}")
                 }
             }
     }
@@ -127,20 +127,20 @@ class LoginActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 if (documents.isEmpty) {
                     // Si no se encuentra el documento
-                    Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                    toastPerzonalizado(this, "Usuario no encontrado")
                 } else {
                     // Si se encuentra, obtener el correo
                     val correo = documents.documents[0].getString("correo")
                     if (correo != null) {
                         iniciarSesionConCorreo(correo, password)
                     } else {
-                        Toast.makeText(this, "Error: Correo no encontrado", Toast.LENGTH_SHORT).show()
+                        toastPerzonalizado(this, "Error: Correo no encontrado")
                     }
                 }
             }
             .addOnFailureListener { e ->
                 // Manejar el error al buscar el usuario
-                Toast.makeText(this, "Error al buscar el usuario: ${e.message}", Toast.LENGTH_LONG).show()
+                toastPerzonalizado(this, "Error al buscar el usuario: ${e.message}")
             }
     }
 

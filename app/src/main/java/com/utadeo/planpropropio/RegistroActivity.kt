@@ -74,17 +74,17 @@ class RegistroActivity : AppCompatActivity () {
             val confirmarPassword = editTextConfirmarPassword.text.toString().trim()
 
             if (correo.isEmpty() && usuario.isEmpty() && password.isEmpty() && confirmarPassword.isEmpty()) {
-                Toast.makeText(this, "Todos los campos son obligaotrios", Toast.LENGTH_SHORT).show()
+                toastPerzonalizado(this, "Todos los campos son obligaotrios")
                 return@setOnClickListener
             }
 
             if (password != confirmarPassword) {
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                toastPerzonalizado(this, "Las contraseñas no coinciden")
                 return@setOnClickListener
             }
 
             if (password.length < 6) {
-                Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
+                toastPerzonalizado(this, "La contraseña debe tener al menos 6 caracteres")
                 return@setOnClickListener
             }
 
@@ -92,17 +92,9 @@ class RegistroActivity : AppCompatActivity () {
             // Verificar si el usuario ya existe en la base de datos
             verificarUsuarioExistente(usuario) { existe, error ->
                 if (error != null) {
-                    Toast.makeText(
-                        this,
-                        "Error al verificar el usuario: $error",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    toastPerzonalizado(this, "Error al verificar el usuario: $error")
                 } else if (existe) {
-                    Toast.makeText(
-                        this,
-                        "El usuario ya existe, elige otro nombre",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    toastPerzonalizado(this, "El usuario ya existe, elige otro nombre")
                 } else {
                     // Crear el usuario en Firebase si no existe
                     auth.createUserWithEmailAndPassword(correo, password)
@@ -118,31 +110,19 @@ class RegistroActivity : AppCompatActivity () {
                                     db.collection("usuarios").document(it)
                                         .set(userData)
                                         .addOnSuccessListener {
-                                            Toast.makeText(
-                                                this,
-                                                "Registro exitoso",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                            toastPerzonalizado(this, "Registro exitoso")
                                             val intent = Intent(this, LoginActivity::class.java)
                                             startActivity(intent)
                                             finish()
                                         }
                                         .addOnFailureListener { e ->
-                                            Toast.makeText(
-                                                this,
-                                                "Error al guardar los datos: ${e.message}",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                            toastPerzonalizado(this, "Error al guardar los datos: ${e.message}")
                                         }
                                 }
 
                             } else {
                                 // Error en el registro
-                                Toast.makeText(
-                                    this,
-                                    "Error en el registro: ${task.exception?.message}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                toastPerzonalizado(this, "Error en el registro: ${task.exception?.message}")
                             }
                         }
                 }
