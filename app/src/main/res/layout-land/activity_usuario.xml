@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2F5596"
+        tools:context=".UsuarioActivity">
+
+        <View
+            android:id="@+id/viewRectanguloUsuario"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_rectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/Planpro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/jsmath_cmti10"
+            android:text="@string/planpro"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewLogoUsuario"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:contentDescription="@string/Logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bloc_notes_2__1_" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSalirUsuario"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:background="@null"
+            android:contentDescription="@string/salir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/salir_1" />
+
+        <ImageButton
+            android:id="@+id/imageButtonAtras"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/atras"
+            app:layout_constraintStart_toStartOf="@+id/viewRectanguloUsuario"
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloUsuario"
+            app:srcCompat="@drawable/atras_1" />
+
+        <ImageView
+            android:id="@+id/imageViewFotoUsuario"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="76dp"
+            android:contentDescription="@string/foto_usuario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloUsuario"
+            app:srcCompat="@drawable/usuario_2" />
+
+        <ImageButton
+            android:id="@+id/imageButtonEditarFotousuario"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="264dp"
+            android:background="@null"
+            android:contentDescription="@string/cambiar_imagen"
+            app:layout_constraintStart_toEndOf="@+id/imageViewFotoUsuario"
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloUsuario"
+            app:srcCompat="@drawable/baseline_edit_24" />
+
+        <TextView
+            android:id="@+id/textViewNombreUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/karma_medium"
+            android:text="@string/predeterminadousuario"
+            android:textSize="45sp"
+            android:textColor="#575757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewFotoUsuario" />
+
+        <EditText
+            android:id="@+id/editTextNombreUsuario"
+            android:layout_width="246dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/nombres"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNombreUsuario"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#808080"
+            android:textSize="16sp"
+            android:background="@drawable/rounded_edittext"/>
+
+        <EditText
+            android:id="@+id/edittextApellidoUsuario"
+            android:layout_width="246dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/apellidos"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#808080"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNombreUsuario" />
+
+        <EditText
+            android:id="@+id/editTextCorreoUsuario"
+            android:layout_width="246dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/correo"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#808080"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittextApellidoUsuario"/>
+
+        <EditText
+            android:id="@+id/editTextTelefonoUsuario"
+            android:layout_width="246dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/celular"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#808080"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCorreoUsuario"/>
+
+        <Button
+            android:id="@+id/buttonGuardarUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#2F5596"
+            android:fontFamily="@font/karma_medium"
+            android:text="@string/guardar"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewRectanguloUsuario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTelefonoUsuario"
+            app:layout_constraintVertical_bias="0.17000002" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -100,7 +100,6 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 buscarCorreoPorUsuario(correoUsuario, password)
             }
-
         }
 
 

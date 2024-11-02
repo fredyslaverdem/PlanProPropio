@@ -20,4 +20,14 @@
     <string name="confirma_tu_contraseña">Confirma tu contraseña</string>
     <string name="correoenviadorecuperar">Correo de cambio de contraseña enviado, verifique su bandeja de entrada.</string>
     <string name="habitos">Hábitos</string>
+    <string name="salir">Salir</string>
+    <string name="editarusuario">Editar usuario</string>
+    <string name="atras">Atras</string>
+    <string name="cambiar_imagen">Botón editar foto de perfil</string>
+    <string name="predeterminadousuario">Usuario</string>
+    <string name="foto_usuario">Foto de perfil</string>
+    <string name="nombres">Nombres</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="celular">Celular</string>
+    <string name="guardar">Guardar</string>
 </resources>

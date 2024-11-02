@@ -8,10 +8,73 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2F5596"
-        android:id="@+id/main">
+        tools:context=".inicio">
+
+        <View
+            android:id="@+id/viewRectanguloRegistro"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_rectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/Planpro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/jsmath_cmti10"
+            android:text="@string/planpro"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewLogoHome"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:contentDescription="@string/Logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bloc_notes_2__1_" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSalirHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="70dp"
+            android:contentDescription="@string/salir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/salir_1"
+            android:background="@null" />
+
+        <ImageButton
+            android:id="@+id/imageButtonUsuarioHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:background="@null"
+            android:contentDescription="@string/editarusuario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usuario_1" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

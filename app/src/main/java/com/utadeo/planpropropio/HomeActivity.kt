@@ -1,7 +1,9 @@
 package com.utadeo.planpropropio
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -19,6 +21,21 @@ class HomeActivity : AppCompatActivity() {
             ?: ContextCompat.getColor(this, R.color.colorFondoApp) // Color por defecto
 
         window.statusBarColor = backgroundColor
+
+        // Programación para el boton de salir
+        val salirButton = findViewById<ImageButton>(R.id.imageButtonSalirHome)
+        salirButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        // Programación para el boton de editar usuario
+        val editarUsuarioButton = findViewById<ImageButton>(R.id.imageButtonUsuarioHome)
+        editarUsuarioButton.setOnClickListener{
+            val intent = Intent(this, UsuarioActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
