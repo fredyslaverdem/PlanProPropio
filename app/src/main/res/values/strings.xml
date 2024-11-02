@@ -20,4 +20,20 @@
     <string name="confirma_tu_contraseña">Confirma tu contraseña</string>
     <string name="correoenviadorecuperar">Correo de cambio de contraseña enviado, verifique su bandeja de entrada.</string>
     <string name="habitos">Hábitos</string>
+    <string name="MENU">MENU</string>
+    <string name="logo_de_modulo_agregar_notas">logo de modulo agregar notas</string>
+    <string name="Agregar">Agregar</string>
+    <string name="logo_de_modulo_lista_de_notas">logo_de_modulo_lista_de_notas</string>
+    <string name="mis_notas">Mis notas</string>
+    <string name="logo_de_modulo_retos">logo_de_modulo_retos</string>
+    <string name="boton_atras_agregar_notas_home">boton_atras_agregar_notas_Home</string>
+    <string name="fecha_de_registrotexto">Fecha de Registro</string>
+    <string name="fecha_registro_notas">00/00/0000</string>
+    <string name="titulo_agregar_nota">Titulo</string>
+    <string name="descripci_n_nota">Descripción</string>
+    <string name="resumen_por_ia">resumen por ia</string>
+    <string name="fecha_de_finalizaciontexto">00/00/0000</string>
+    <string name="guardar_nota">GUARDAR</string>
+    <string name="logo_ia_modulo_agregar_notas">logo_IA_modulo_agregar_notas</string>
+    <string name="calendario_fecha_finalizacion_nota">calendario_fecha_finalizacion_nota</string>
 </resources>

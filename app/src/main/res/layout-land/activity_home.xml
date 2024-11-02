@@ -11,7 +11,138 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2F5596"
-        android:id="@+id/main">
+        android:id="@+id/Home"
+        tools:context=".HomeActivity">
+
+        <View
+            android:id="@+id/viewRectanguloHome"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/rounded_rectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/Planpro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/jsmath_cmti10"
+            android:text="@string/planpro"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/viewRectanguloHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/MENU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="572dp"
+            android:text="@string/MENU"
+            android:textColor="#575757"
+            android:textSize="32sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.465"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloHome"
+            app:layout_constraintVertical_bias="0.676" />
+
+        <ImageView
+            android:id="@+id/imageViewListaagregar1"
+            android:layout_width="100dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="252dp"
+            android:contentDescription="@string/logo_de_modulo_agregar_notas"
+            android:src="@drawable/agregar_notas_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.274"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewListanotas2"
+            android:layout_width="100dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="252dp"
+            android:layout_marginEnd="55dp"
+            android:contentDescription="@string/logo_de_modulo_lista_de_notas"
+            android:src="@drawable/lista_de_notas_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toEndOf="@+id/imageViewListaagregar1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonagregarnotas"
+            android:layout_width="118dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="55dp"
+            android:backgroundTint="#2F5596"
+            android:text="@string/Agregar"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewRetosinicio"
+            app:layout_constraintEnd_toStartOf="@+id/buttonMisnotas"
+            app:layout_constraintHorizontal_bias="0.477"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewListaagregar1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/buttonMisnotas"
+            android:layout_width="118dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="238dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="376dp"
+            android:backgroundTint="#2F5596"
+            android:text="@string/mis_notas"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.537"
+            app:layout_constraintStart_toStartOf="@+id/viewRectanguloHome"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewListanotas2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageViewRetosinicio"
+            android:layout_width="100dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="490dp"
+            android:contentDescription="@string/logo_de_modulo_retos"
+            android:src="@drawable/retos_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.274"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonhabitos1"
+            android:layout_width="118dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="140dp"
+            android:backgroundTint="#2F5596"
+            android:text="@string/habitos"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.274"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewRetosinicio"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

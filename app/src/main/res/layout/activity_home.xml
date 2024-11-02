@@ -12,31 +12,31 @@
         android:layout_height="wrap_content"
         android:background="#2F5596"
         android:id="@+id/Home"
-        tools:context=".inicio">
+        tools:context=".HomeActivity">
 
         <View
-            android:id="@+id/viewRectanguloRegistro"
+            android:id="@+id/viewRectanguloHome"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="80dp"
             android:background="@drawable/rounded_rectangle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/Planpro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:fontFamily="@font/jsmath_cmti10"
             android:text="@string/planpro"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:fontFamily="@font/jsmath_cmti10"
-            app:layout_constraintBottom_toBottomOf="@+id/View2"
+            app:layout_constraintBottom_toTopOf="@+id/viewRectanguloHome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.225"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,95 +48,100 @@
             android:id="@+id/MENU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu"
-            android:textColor="@color/black_osc"
-            android:textSize="25sp"
+            android:layout_marginBottom="572dp"
+            android:text="@string/MENU"
+            android:textColor="#575757"
+            android:textSize="32sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/View2"
-            app:layout_constraintVertical_bias="0.049" />
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloHome"
+            app:layout_constraintVertical_bias="0.666" />
 
         <ImageView
             android:id="@+id/imageViewListaagregar1"
-            android:layout_width="112dp"
-            android:layout_height="116dp"
-            android:layout_marginTop="224dp"
-            android:layout_marginEnd="248dp"
-            android:contentDescription="@string/todo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/agregar_notas" />
+            android:layout_width="100dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="188dp"
+            android:contentDescription="@string/logo_de_modulo_agregar_notas"
+            android:src="@drawable/agregar_notas_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewListanotas2"
-            android:layout_width="108dp"
-            android:layout_height="107dp"
-            android:layout_marginTop="224dp"
-            android:layout_marginEnd="60dp"
-            android:contentDescription="@string/todo"
+            android:layout_width="100dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="188dp"
+            android:layout_marginEnd="55dp"
+            android:contentDescription="@string/logo_de_modulo_lista_de_notas"
+            android:src="@drawable/lista_de_notas_1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/lista_de_notas" />
+            app:layout_constraintHorizontal_bias="0.854"
+            app:layout_constraintStart_toEndOf="@+id/imageViewListaagregar1"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonagregarnotas"
-            android:layout_width="116dp"
-            android:layout_height="48dp"
-            android:background="@drawable/button_rec"
-            android:backgroundTint="#5278A0"
+            android:layout_width="118dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="55dp"
+            android:backgroundTint="#2F5596"
             android:text="@string/Agregar"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/imageViewRetosinicio"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.119"
+            app:layout_constraintEnd_toStartOf="@+id/buttonMisnotas"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewListaagregar1"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintVertical_bias="0.016" />
 
         <Button
             android:id="@+id/buttonMisnotas"
-            android:layout_width="116dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/button_rec"
-            android:backgroundTint="#5278A0"
-            android:text="@string/Agregar"
-            android:textSize="16sp"
+            android:layout_width="118dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="238dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="376dp"
+            android:backgroundTint="#2F5596"
+            android:text="@string/mis_notas"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.783"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/viewRectanguloHome"
             app:layout_constraintTop_toBottomOf="@+id/imageViewListanotas2"
-            app:layout_constraintVertical_bias="0.002" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/imageViewRetosinicio"
-            android:layout_width="108dp"
-            android:layout_height="107dp"
-            android:layout_marginTop="416dp"
-            android:layout_marginEnd="248dp"
-            android:contentDescription="@string/todo"
+            android:layout_width="100dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="412dp"
+            android:contentDescription="@string/logo_de_modulo_retos"
+            android:src="@drawable/retos_1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/retos" />
+            app:layout_constraintHorizontal_bias="0.176"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/buttonhabitos1"
-            android:layout_width="116dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="118dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="140dp"
             android:backgroundTint="#2F5596"
             android:text="@string/habitos"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.119"
+            app:layout_constraintHorizontal_bias="0.153"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewRetosinicio"
-            app:layout_constraintVertical_bias="0.004" />
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
