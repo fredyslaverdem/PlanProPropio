@@ -8,14 +8,14 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Home"
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2F5596"
-        tools:context=".inicio">
+        tools:context=".HomeActivity">
 
         <View
-            android:id="@+id/viewRectanguloRegistro"
+            android:id="@+id/viewRectanguloHome"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="100dp"
@@ -25,20 +25,23 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/Planpro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="62dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/jsmath_cmti10"
             android:text="@string/planpro"
             android:textColor="@color/white"
             android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/viewRectanguloHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.225"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.003" />
 
         <ImageView
             android:id="@+id/imageViewLogoHome"
@@ -57,11 +60,11 @@
             android:layout_height="48dp"
             android:layout_marginTop="13dp"
             android:layout_marginEnd="70dp"
+            android:background="@null"
             android:contentDescription="@string/salir"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/salir_1"
-            android:background="@null" />
+            app:srcCompat="@drawable/salir_1" />
 
         <ImageButton
             android:id="@+id/imageButtonUsuarioHome"
@@ -74,6 +77,99 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/usuario_1" />
+
+        <TextView
+            android:id="@+id/MENU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/MENU"
+            android:textColor="#575757"
+            android:textSize="32sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloHome" />
+
+        <ImageView
+            android:id="@+id/AgregarNotas1"
+            android:layout_width="120dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/logo_de_modulo_agregar_notas"
+            android:src="@drawable/agregar_notas_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MENU" />
+
+        <ImageView
+            android:id="@+id/Listanotas2"
+            android:layout_width="120dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/logo_de_modulo_lista_de_notas"
+            android:src="@drawable/lista_de_notas_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.80"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MENU"
+            tools:layout_editor_absoluteY="188dp" />
+
+        <Button
+            android:id="@+id/buttonagregarnotas"
+            android:layout_width="120dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="#2F5596"
+            android:text="@string/Agregar"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AgregarNotas1" />
+
+        <Button
+            android:id="@+id/buttonMisnotas"
+            android:layout_width="120dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="#2F5596"
+            android:text="@string/mis_notas"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.80"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="302dp"
+            app:layout_constraintTop_toBottomOf="@+id/Listanotas2"/>
+
+        <ImageView
+            android:id="@+id/Habitos1"
+            android:layout_width="120dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="100dp"
+            android:contentDescription="@string/logo_de_modulo_retos"
+            android:src="@drawable/retos_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonagregarnotas" />
+
+        <Button
+            android:id="@+id/buttonhabitos1"
+            android:layout_width="120dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="#2F5596"
+            android:text="@string/habitos"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Habitos1" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
