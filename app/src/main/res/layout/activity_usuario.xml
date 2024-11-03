@@ -86,17 +86,6 @@
             app:layout_constraintTop_toTopOf="@+id/viewRectanguloUsuario"
             app:srcCompat="@drawable/usuario_2" />
 
-        <ImageButton
-            android:id="@+id/imageButtonEditarFotousuario"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="264dp"
-            android:background="@null"
-            android:contentDescription="@string/cambiar_imagen"
-            app:layout_constraintStart_toEndOf="@+id/imageViewFotoUsuario"
-            app:layout_constraintTop_toTopOf="@+id/viewRectanguloUsuario"
-            app:srcCompat="@drawable/baseline_edit_24" />
-
         <TextView
             android:id="@+id/textViewNombreUsuario"
             android:layout_width="wrap_content"
