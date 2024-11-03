@@ -9,8 +9,12 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {
+
+    private val auth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -35,12 +39,10 @@ class HomeActivity : AppCompatActivity() {
         }
         window.statusBarColor = backgroundColor
 
-        // Programación para el boton de salir
+        // Configurar el comportamiento del botón "Salir"
         val salirButton = findViewById<ImageButton>(R.id.imageButtonSalirHome)
         salirButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            cerrarSesion()
         }
 
         // Programación para el boton de editar usuario
@@ -50,5 +52,18 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+    // funcion para cerrar sesión
+    private fun cerrarSesion() {
+        auth.signOut()
+        irPantallaInicio()
+    }
+
+    // función para redirigir a la pantalla de inicio de sesión
+    private fun irPantallaInicio() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 }

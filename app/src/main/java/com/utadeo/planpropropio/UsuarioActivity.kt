@@ -53,9 +53,7 @@ class UsuarioActivity : AppCompatActivity() {
         // Configurar el comportamiento del botón "Salir"
         val salirButton = findViewById<ImageButton>(R.id.imageButtonSalirUsuario)
         salirButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            cerrarSesion()
         }
 
         // Funcionalidad para que se muestre el nombre de usuario
@@ -78,6 +76,20 @@ class UsuarioActivity : AppCompatActivity() {
         btnGuardarCambios.setOnClickListener {
             guardarCambiosUsuario()
         }
+    }
+
+    // funcion para cerrar sesión
+    private fun cerrarSesion() {
+        auth.signOut()
+        irPantallaInicio()
+    }
+
+    // función para redirigir a la pantalla de inicio de sesión
+    private fun irPantallaInicio() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     // Función para cargar el nombre de usuario
