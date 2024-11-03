@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -19,7 +21,18 @@ class HomeActivity : AppCompatActivity() {
         // Obtener el color de fondo y aplicarlo a la barra de estado
         val backgroundColor = (mainLayout.background as? ColorDrawable)?.color
             ?: ContextCompat.getColor(this, R.color.colorFondoApp) // Color por defecto
+        val botonAgregarNotas = findViewById<Button>(R.id.buttonagregarnotas)
+        val imagenAgregarNotas = findViewById<ImageView>(R.id.AgregarNotas1)
 
+        botonAgregarNotas.setOnClickListener {
+            val intent = Intent(this, AgregarNotasActivity::class.java)
+            startActivity(intent)
+        }
+
+        imagenAgregarNotas.setOnClickListener {
+            val intent = Intent(this, AgregarNotasActivity::class.java)
+            startActivity(intent)
+        }
         window.statusBarColor = backgroundColor
 
         // Programación para el boton de salir
