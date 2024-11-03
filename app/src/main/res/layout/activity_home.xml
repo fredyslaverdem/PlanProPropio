@@ -8,10 +8,10 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2F5596"
-        android:id="@+id/Home"
         tools:context=".HomeActivity">
 
         <View
@@ -43,22 +43,53 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.003" />
 
+        <ImageView
+            android:id="@+id/imageViewLogoHome"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:contentDescription="@string/Logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bloc_notes_2__1_" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSalirHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="70dp"
+            android:contentDescription="@string/salir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/salir_1"
+            android:background="@null" />
+
+        <ImageButton
+            android:id="@+id/imageButtonUsuarioHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:background="@null"
+            android:contentDescription="@string/editarusuario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usuario_1" />
 
         <TextView
             android:id="@+id/MENU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="572dp"
+            android:layout_marginTop="30dp"
             android:text="@string/MENU"
             android:textColor="#575757"
             android:textSize="32sp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewRectanguloHome"
-            app:layout_constraintVertical_bias="0.666" />
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloHome" />
 
         <ImageView
             android:id="@+id/AgregarNotas1"
