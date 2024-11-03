@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2F5596"
-        android:id="@+id/AgregarNotas"
+        android:id="@+id/main"
         tools:context=".AgregarNotasActivity">
 
         <View
@@ -24,7 +24,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/Planpro"
@@ -46,11 +46,11 @@
             android:id="@+id/ButtonAtrasHome1"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:contentDescription="@string/boton_atras_agregar_notas_home"
             android:src="@drawable/atras_1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/viewRectanguloAgregarNotas" />
 
@@ -58,12 +58,12 @@
             android:id="@+id/TituloFechaRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/fecha_de_registrotexto"
             android:textColor="#575757"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.124"
+            app:layout_constraintHorizontal_bias="0.156"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ButtonAtrasHome1" />
 
@@ -71,11 +71,12 @@
             android:id="@+id/FechaRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="@string/fecha_registro_notas"
             android:textSize="25sp"
+            android:textColor="#575757"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.237"
+            app:layout_constraintHorizontal_bias="0.359"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TituloFechaRegistro" />
 
@@ -84,6 +85,7 @@
             android:layout_width="560dp"
             android:layout_height="54dp"
             android:layout_marginTop="16dp"
+            android:textColor="#575757"
             android:hint="@string/titulo_agregar_nota"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +98,7 @@
             android:layout_width="560dp"
             android:layout_height="199dp"
             android:gravity="top"
+            android:textColor="#575757"
             android:hint="@string/descripci_n_nota"
             android:inputType="textMultiLine"
             android:maxLines="10"
@@ -110,23 +113,26 @@
             android:id="@+id/CalendarioAgregarNotas"
             android:layout_width="79dp"
             android:layout_height="74dp"
-            android:layout_marginStart="84dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="104dp"
             android:contentDescription="@string/calendario_fecha_finalizacion_nota"
             android:src="@drawable/calendario_1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DescripcionNota"
+            app:layout_constraintVertical_bias="0.892" />
 
         <TextView
             android:id="@+id/FechaFinalizacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="76dp"
+            android:textColor="#575757"
             android:text="@string/fecha_de_finalizaciontexto"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.004"
             app:layout_constraintStart_toEndOf="@+id/CalendarioAgregarNotas"
             app:layout_constraintTop_toBottomOf="@+id/DescripcionNota" />
 
@@ -140,10 +146,10 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/viewRectanguloAgregarNotas"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/FechaFinalizacion"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.458" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

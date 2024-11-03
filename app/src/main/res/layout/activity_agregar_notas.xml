@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2F5596"
-        android:id="@+id/AgregarNotas"
+        android:id="@+id/main"
         tools:context=".AgregarNotasActivity">
 
         <View
@@ -74,6 +74,7 @@
             android:layout_marginTop="4dp"
             android:text="@string/fecha_registro_notas"
             android:textSize="25sp"
+            android:textColor="#575757"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.359"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +85,7 @@
             android:layout_width="350dp"
             android:layout_height="54dp"
             android:layout_marginTop="16dp"
+            android:textColor="#575757"
             android:hint="@string/titulo_agregar_nota"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +98,7 @@
             android:layout_width="359dp"
             android:layout_height="199dp"
             android:gravity="top"
+            android:textColor="#575757"
             android:hint="@string/descripci_n_nota"
             android:inputType="textMultiLine"
             android:maxLines="10"
@@ -125,6 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="76dp"
+            android:textColor="#575757"
             android:text="@string/fecha_de_finalizaciontexto"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

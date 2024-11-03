@@ -2,12 +2,15 @@ package com.utadeo.planpropropio
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -46,6 +49,7 @@ class AgregarNotasActivity : AppCompatActivity() {
         botonAtrasHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 
@@ -70,6 +74,14 @@ class AgregarNotasActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        // Difiniciendo variable para el layout principlal y asi el fondo se configure con ui del dispositivo.
+        val mainLayout = findViewById<ConstraintLayout>(R.id.main)
+
+        // Obtener el color de fondo y aplicarlo a la barra de estado
+        val backgroundColor = (mainLayout.background as? ColorDrawable)?.color
+            ?: ContextCompat.getColor(this, R.color.colorFondoApp)
+        window.statusBarColor = backgroundColor
     }
 
     private fun showDatePickerDialog() {
