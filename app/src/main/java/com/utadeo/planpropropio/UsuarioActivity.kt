@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -28,7 +29,7 @@ class UsuarioActivity : AppCompatActivity() {
     private lateinit var imgFotoPerfil: ImageView
     private lateinit var edtNombres: EditText
     private lateinit var edtApellidos: EditText
-    private lateinit var edtCorreo: EditText
+    private lateinit var edtCorreo: TextView
     private lateinit var edtCelular: EditText
     private lateinit var btnGuardarCambios: Button
     private lateinit var textViewNombreUsuario: TextView
@@ -53,6 +54,7 @@ class UsuarioActivity : AppCompatActivity() {
         // Configurar el comportamiento del botón "Salir"
         val salirButton = findViewById<ImageButton>(R.id.imageButtonSalirUsuario)
         salirButton.setOnClickListener {
+            toastPerzonalizado(this, "Logout exitoso")
             cerrarSesion()
         }
 
@@ -121,7 +123,7 @@ class UsuarioActivity : AppCompatActivity() {
                     if (document != null) {
                         edtNombres.setText(document.getString("nombres"))
                         edtApellidos.setText(document.getString("apellidos"))
-                        edtCorreo.setText(document.getString("correo"))
+                        edtCorreo.text = document.getString("correo")
                         edtCelular.setText(document.getString("celular"))
                         correoActual = document.getString("correo")
 
@@ -135,12 +137,11 @@ class UsuarioActivity : AppCompatActivity() {
 
     // Función para guardar los cambios
     private fun guardarCambiosUsuario() {
-        val nombres = edtNombres.text.toString()
-        val apellidos = edtApellidos.text.toString()
-        val correoNuevo = edtCorreo.text.toString()
-        val celular = edtCelular.text.toString()
+        val nombres = edtNombres.text.toString().trim()
+        val apellidos = edtApellidos.text.toString().trim()
+        val celular = edtCelular.text.toString().trim()
 
-        if (nombres.isEmpty() || apellidos.isEmpty() || correoNuevo.isEmpty() || celular.isEmpty()) {
+        if (nombres.isEmpty() || apellidos.isEmpty() || celular.isEmpty()) {
             toastPerzonalizado(this, "Por favor complete todos los campos")
             return
         }
@@ -149,33 +150,14 @@ class UsuarioActivity : AppCompatActivity() {
         val usuarioData = mapOf(
             "nombres" to nombres,
             "apellidos" to apellidos,
-            "correo" to correoNuevo,
             "celular" to celular
         )
 
         userId?.let { id ->
             db.collection("usuarios").document(id).update(usuarioData)
                 .addOnSuccessListener {
-                    if (correoNuevo != correoActual) {
-                        actualizarCorreoAutenticacion(correoNuevo)
-                    }  else {
-                        toastPerzonalizado(this, "Cambios guardados exitosamente")
-                    }
-                }
-        }
-    }
+                    toastPerzonalizado(this, "Cambios guardados exitosamente")
 
-    // Función para actualizar el correo de autenticación
-    private fun actualizarCorreoAutenticacion(nuevoCorreo: String) {
-        val user = auth.currentUser
-        user?.let {
-            it.updateEmail(nuevoCorreo)
-                .addOnSuccessListener {
-                    toastPerzonalizado(this, "Correo actualizado exitosamente")
-
-                }
-                .addOnFailureListener { e ->
-                    toastPerzonalizado(this, "Error al actualizar el correo: ${e.message}")
                 }
         }
     }

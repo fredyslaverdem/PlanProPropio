@@ -42,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
         // Configurar el comportamiento del botón "Salir"
         val salirButton = findViewById<ImageButton>(R.id.imageButtonSalirHome)
         salirButton.setOnClickListener {
+            toastPerzonalizado(this, "Logout exitoso")
             cerrarSesion()
         }
 

@@ -19,7 +19,8 @@
         android:windowSoftInputMode="adjustPan">
         <activity
             android:name=".UsuarioActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".AgregarNotasActivity"
             android:exported="false" />
