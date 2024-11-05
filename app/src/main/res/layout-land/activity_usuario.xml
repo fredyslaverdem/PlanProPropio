@@ -86,17 +86,6 @@
             app:layout_constraintTop_toTopOf="@+id/viewRectanguloUsuario"
             app:srcCompat="@drawable/usuario_2" />
 
-        <ImageButton
-            android:id="@+id/imageButtonEditarFotousuario"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="264dp"
-            android:background="@null"
-            android:contentDescription="@string/cambiar_imagen"
-            app:layout_constraintStart_toEndOf="@+id/imageViewFotoUsuario"
-            app:layout_constraintTop_toTopOf="@+id/viewRectanguloUsuario"
-            app:srcCompat="@drawable/baseline_edit_24" />
-
         <TextView
             android:id="@+id/textViewNombreUsuario"
             android:layout_width="wrap_content"
@@ -113,7 +102,7 @@
 
         <EditText
             android:id="@+id/editTextNombreUsuario"
-            android:layout_width="246dp"
+            android:layout_width="560dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:hint="@string/nombres"
@@ -132,7 +121,7 @@
 
         <EditText
             android:id="@+id/edittextApellidoUsuario"
-            android:layout_width="246dp"
+            android:layout_width="560dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:hint="@string/apellidos"
@@ -150,14 +139,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextNombreUsuario" />
 
-        <EditText
+        <TextView
             android:id="@+id/editTextCorreoUsuario"
-            android:layout_width="246dp"
-            android:layout_height="48dp"
+            android:layout_width="560dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/correo"
             android:background="@drawable/rounded_edittext"
-            android:inputType="text"
             android:paddingStart="16dp"
             android:paddingTop="10dp"
             android:paddingEnd="16dp"
@@ -171,7 +159,7 @@
 
         <EditText
             android:id="@+id/editTextTelefonoUsuario"
-            android:layout_width="246dp"
+            android:layout_width="560dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:hint="@string/celular"
@@ -206,5 +194,4 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>
