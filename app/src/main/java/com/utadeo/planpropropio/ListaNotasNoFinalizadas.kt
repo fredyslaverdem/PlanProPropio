@@ -1,9 +1,12 @@
 package com.utadeo.planpropropio
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,6 +23,15 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_notas_no_finalizadas)
+
+        // Difiniciendo variable para el layout principlal y asi el fondo se configure con ui del dispositivo.
+        val mainLayout = findViewById<ConstraintLayout>(R.id.main)
+
+        // Obtener el color de fondo y aplicarlo a la barra de estado
+        val backgroundColor = (mainLayout.background as? ColorDrawable)?.color
+            ?: ContextCompat.getColor(this, R.color.colorFondoApp) // Color por defecto
+
+        window.statusBarColor = backgroundColor
 
         recyclerViewNotas = findViewById(R.id.recyclerNoFinalizadas)
         recyclerViewNotas.setHasFixedSize(true)

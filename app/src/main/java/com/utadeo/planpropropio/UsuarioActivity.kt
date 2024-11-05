@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.app.Activity
 import android.graphics.BitmapFactory
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.provider.MediaStore
 import android.widget.Button
@@ -14,6 +15,7 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.Task
@@ -43,6 +45,15 @@ class UsuarioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_usuario)
+
+        // Difiniciendo variable para el layout principlal y asi el fondo se configure con ui del dispositivo.
+        val mainLayout = findViewById<ConstraintLayout>(R.id.main)
+
+        // Obtener el color de fondo y aplicarlo a la barra de estado
+        val backgroundColor = (mainLayout.background as? ColorDrawable)?.color
+            ?: ContextCompat.getColor(this, R.color.colorFondoApp) // Color por defecto
+
+        window.statusBarColor = backgroundColor
 
         // Configurar el comportamiento del botón "Atrás"
         val atrasButton = findViewById<ImageButton>(R.id.imageButtonAtras)
