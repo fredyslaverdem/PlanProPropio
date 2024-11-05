@@ -13,11 +13,22 @@
         android:id="@+id/main"
         tools:context=".AgregarNotasActivity">
 
+        <ImageView
+            android:id="@+id/imageViewLogoHome"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:contentDescription="@string/Logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bloc_notes_2__1_" />
+
         <View
             android:id="@+id/viewRectanguloAgregarNotas"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/rounded_rectangle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +48,10 @@
             android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@+id/viewRectanguloAgregarNotas"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintHorizontal_bias="0.225"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.003" />
 
         <ImageView
             android:id="@+id/ButtonAtrasHome1"
@@ -52,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewRectanguloAgregarNotas" />
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloAgregarNotas"/>
 
         <TextView
             android:id="@+id/TituloFechaRegistro"
@@ -78,7 +89,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.359"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TituloFechaRegistro" />
+            app:layout_constraintTop_toBottomOf="@+id/TituloFechaRegistro"/>
 
         <EditText
             android:id="@+id/TituloNota"
@@ -144,6 +155,7 @@
             android:backgroundTint="#2F5596"
             android:text="@string/guardar_nota"
             android:textSize="15sp"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/viewRectanguloAgregarNotas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

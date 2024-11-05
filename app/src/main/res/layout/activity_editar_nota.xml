@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -82,13 +83,12 @@
             android:id="@+id/ButtonAtrasHome1"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:contentDescription="@string/boton_atras_agregar_notas_home"
             android:src="@drawable/atras_1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewRectanguloEditarNota"/>
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloEditarNota" />
 
         <TextView
             android:id="@+id/TituloFechaRegistro"
