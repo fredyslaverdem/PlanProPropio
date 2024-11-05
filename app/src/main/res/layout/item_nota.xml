@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/iconoNota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/agregar_notas_2"
+        android:contentDescription="@string/icono_nota" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tituloNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#575757"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/descripcionNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#575757"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/FechaRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#575757"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/FechaFinalizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#575757"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</LinearLayout>
+
+

@@ -23,6 +23,17 @@ class HomeActivity : AppCompatActivity() {
             ?: ContextCompat.getColor(this, R.color.colorFondoApp) // Color por defecto
         val botonAgregarNotas = findViewById<Button>(R.id.buttonagregarnotas)
         val imagenAgregarNotas = findViewById<ImageView>(R.id.AgregarNotas1)
+        val botonlistaNotas = findViewById<Button>(R.id.buttonMisnotas)
+        val imagenlistaNotas = findViewById<ImageView>(R.id.Listanotas2)
+
+        botonlistaNotas.setOnClickListener {
+            val intent = Intent(this, ListaNotasNoFinalizadas::class.java)
+            startActivity(intent)
+        }
+        imagenlistaNotas.setOnClickListener {
+            val intent = Intent(this, ListaNotasNoFinalizadas::class.java)
+            startActivity(intent)
+        }
 
         botonAgregarNotas.setOnClickListener {
             val intent = Intent(this, AgregarNotasActivity::class.java)
