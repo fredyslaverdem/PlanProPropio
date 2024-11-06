@@ -50,4 +50,6 @@
     <string name="finalizadas_button">finalizadas</string>
     <string name="icono_nota">icono nota</string>
     <string name="finalizadotext">finalizado</string>
+    <string name="cambiar_usuario">Boton cambiar nombre de usuario</string>
+    <string name="nuevousuario">Nuevo usuario</string>
 </resources>

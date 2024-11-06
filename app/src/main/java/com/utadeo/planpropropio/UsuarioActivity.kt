@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
@@ -88,6 +89,12 @@ class UsuarioActivity : AppCompatActivity() {
         // Click en guardar cambios
         btnGuardarCambios.setOnClickListener {
             guardarCambiosUsuario()
+        }
+
+        // Click en cambiar nombre de usuario
+        val btnCambiarNombreDeUsuario = findViewById<ImageButton>(R.id.imageButtonCambiarUsuario)
+        btnCambiarNombreDeUsuario.setOnClickListener {
+            mostrarDialogoCambiarNombre()
         }
     }
 
@@ -170,6 +177,40 @@ class UsuarioActivity : AppCompatActivity() {
                     toastPerzonalizado(this, "Cambios guardados exitosamente")
 
                 }
+        }
+    }
+
+    // funciones para cambiar usuario
+    private fun mostrarDialogoCambiarNombre() {
+        val dialogView= layoutInflater.inflate(R.layout.dialog_edit_username, null)
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setTitle("Cambiar nombre de usuario")
+            .setView(dialogView)
+            .setPositiveButton("Guardar") {dialog, _ ->
+                val nuevoNombre = dialogView.findViewById<EditText>(R.id.etNuevoNombre).text.toString().trim()
+                if (nuevoNombre.isNotEmpty()) {
+                    actualizarNombreUsuario(nuevoNombre)
+                } else {
+                    toastPerzonalizado(this, "El nombre no puede estar vacio")
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancelar") {dialog, _ -> dialog.dismiss()}
+        dialogBuilder.create().show()
+    }
+
+    private fun actualizarNombreUsuario(nuevoNombre: String) {
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
+            db.collection("usuarios").document(userId).update("usuario", nuevoNombre)
+                .addOnSuccessListener {
+                    toastPerzonalizado(this, "Nombre de usuario actualizado")
+                }
+                .addOnFailureListener { e ->
+                    toastPerzonalizado(this, "Error: ${e.message}")
+                }
+        } else {
+            toastPerzonalizado(this, "Usuario no autenticado")
         }
     }
 }
