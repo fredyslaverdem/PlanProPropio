@@ -96,7 +96,6 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
                 // Bind the Nota data to the ViewHolder
                 holder.bind(model)
                 val notaId= snapshots.getSnapshot(position).id
-                toastPerzonalizado(this@ListaNotasNoFinalizadas, "Nota ID: $notaId")
 
                 holder.itemView.setOnClickListener {
                     val intent = Intent(holder.itemView.context, EditarNotaActivity::class.java)
