@@ -2,7 +2,6 @@ package com.utadeo.planpropropio
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.widget.TextView
 import android.widget.Toast

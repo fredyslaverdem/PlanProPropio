@@ -125,8 +125,7 @@
             app:layout_constraintEnd_toEndOf="@+id/viewRectanguloNotasNoFinalizadas"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/viewRectanguloNotasNoFinalizadas"
-            app:layout_constraintTop_toTopOf="@+id/viewRectanguloNotasNoFinalizadas"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/ButtonListaNotasNoFinalizadas1" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

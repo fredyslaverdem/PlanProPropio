@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true"
-    android:fitsSystemWindows="true">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -83,12 +82,13 @@
             android:id="@+id/ButtonAtrasHome1"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:contentDescription="@string/boton_atras_agregar_notas_home"
             android:src="@drawable/atras_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewRectanguloEditarNota" />
+            app:layout_constraintTop_toTopOf="@+id/viewRectanguloEditarNota"/>
 
         <ImageView
             android:id="@+id/ButtonBorrarNota"
@@ -128,7 +128,7 @@
 
         <EditText
             android:id="@+id/TituloNotaE"
-            android:layout_width="350dp"
+            android:layout_width="450dp"
             android:layout_height="54dp"
             android:layout_marginTop="16dp"
             android:textColor="#575757"
@@ -141,8 +141,8 @@
 
         <EditText
             android:id="@+id/DescripcionNota"
-            android:layout_width="356dp"
-            android:layout_height="307dp"
+            android:layout_width="450dp"
+            android:layout_height="250dp"
             android:gravity="top"
             android:hint="@string/descripci_n_nota"
             android:inputType="textMultiLine"
