@@ -25,6 +25,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class ListaNotasFinalizadas : AppCompatActivity() {
     private lateinit var firebasefirestore: FirebaseFirestore
@@ -32,6 +33,8 @@ class ListaNotasFinalizadas : AppCompatActivity() {
     private lateinit var firestoreRecyclerAdapter: FirestoreRecyclerAdapter<Nota, NotaViewHolder>
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var options: FirestoreRecyclerOptions<Nota>
+
+    private lateinit var auth: FirebaseAuth
 
 
 
@@ -69,8 +72,8 @@ class ListaNotasFinalizadas : AppCompatActivity() {
         }
 
         imageButtonSalirHome.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            toastPerzonalizado(this, "Logout exitoso")
+            cerrarSesion()
         }
 
         imageButtonUsuarioHome.setOnClickListener {
@@ -86,10 +89,13 @@ class ListaNotasFinalizadas : AppCompatActivity() {
 
         firebasefirestore = FirebaseFirestore.getInstance()
 
-
-
+        // Set up FirestoreRecyclerOptions
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        val userEmail = user?.email
         val query = firebasefirestore.collection("notas")
             .whereEqualTo("finalizado", true)
+            .whereEqualTo("correo", userEmail)
 
 
         options = FirestoreRecyclerOptions.Builder<Nota>()
@@ -101,7 +107,6 @@ class ListaNotasFinalizadas : AppCompatActivity() {
             override fun onBindViewHolder(holder: NotaViewHolder, position: Int, model: Nota) {
                 holder.bind(model)
                 val notaId = snapshots.getSnapshot(position).id
-                toastPerzonalizado(this@ListaNotasFinalizadas, "Nota ID: $notaId")
 
                 holder.itemView.setOnClickListener {
                     val intent = Intent(holder.itemView.context, EditarNotaActivity::class.java)
@@ -118,6 +123,20 @@ class ListaNotasFinalizadas : AppCompatActivity() {
 
         recyclerViewNotasFinalizadas.adapter = firestoreRecyclerAdapter
 
+    }
+
+    // Función para cerrar sesión
+    private fun cerrarSesion() {
+        auth.signOut()
+        irPantallaInicio()
+    }
+
+    // función para redirigir a la pantalla de inicio de sesión
+    private fun irPantallaInicio() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     override fun onStart() {

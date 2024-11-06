@@ -46,7 +46,7 @@
     <TextView
         android:id="@+id/textViewUsernameOcorreo"
         android:layout_width="198dp"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/inter_medium"
         android:text="@string/usernameocorreo"
         android:textColor="#575757"
@@ -104,7 +104,7 @@
     <TextView
         android:id="@+id/textViewPasswordLogin"
         android:layout_width="102dp"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/inter_medium"
         android:text="@string/password"
         android:textColor="#575757"
@@ -118,7 +118,7 @@
     <Button
         android:id="@+id/buttonIniciarSesionLogin"
         android:layout_width="155dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#2F5596"
         android:fontFamily="@font/inter_medium"
         android:text="@string/iniciarsesion"

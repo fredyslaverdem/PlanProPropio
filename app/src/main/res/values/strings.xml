@@ -70,4 +70,6 @@
     <string name="sab_tcheckbox">Sab</string>
     <string name="botonfloat_crearhabito">Crear habito</string>
     <string name="perfil_usuario">Perfil de usuario</string>
+    <string name="cambiar_usuario">Boton cambiar nombre de usuario</string>
+    <string name="nuevousuario">Nuevo usuario</string>
 </resources>

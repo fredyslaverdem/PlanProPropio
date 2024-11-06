@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -29,6 +30,8 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var firestoreRecyclerAdapter: FirestoreRecyclerAdapter<Nota, NotaViewHolder>
     private lateinit var options: FirestoreRecyclerOptions<Nota>
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +62,9 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
             startActivity(intent)
         }
         imageButtonSalirHome.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            toastPerzonalizado(this, "Logout exitoso")
+            cerrarSesion()
+
         }
         imageButtonUsuarioHome.setOnClickListener {
             val intent = Intent(this, UsuarioActivity::class.java)
@@ -76,8 +80,12 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
         firebasefirestore = FirebaseFirestore.getInstance()
 
         // Set up FirestoreRecyclerOptions
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        val userEmail = user?.email
         val query = firebasefirestore.collection("notas")
             .whereEqualTo("finalizado", false)
+            .whereEqualTo("correo", userEmail)
 
         options = FirestoreRecyclerOptions.Builder<Nota>()
             .setQuery(query, Nota::class.java)
@@ -89,7 +97,6 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
                 // Bind the Nota data to the ViewHolder
                 holder.bind(model)
                 val notaId= snapshots.getSnapshot(position).id
-                toastPerzonalizado(this@ListaNotasNoFinalizadas, "Nota ID: $notaId")
 
                 holder.itemView.setOnClickListener {
                     val intent = Intent(holder.itemView.context, EditarNotaActivity::class.java)
@@ -106,6 +113,20 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
         }
 
         recyclerViewNotas.adapter = firestoreRecyclerAdapter
+    }
+
+    // función para cerrar sesion
+    private fun cerrarSesion() {
+        auth.signOut()
+        irPantallaInicio()
+    }
+
+    // función para redirigir a la pantalla de inicio de sesión
+    private fun irPantallaInicio() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     override fun onStart() {

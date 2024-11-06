@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "744659897609",
+    "project_id": "planprov2",
+    "storage_bucket": "planprov2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744659897609:android:b3dbb02961d306893857d8",
+        "android_client_info": {
+          "package_name": "com.utadeo.planpropropio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWgW_xb4egswNZ67pED8gRYXe308Fd_y4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
