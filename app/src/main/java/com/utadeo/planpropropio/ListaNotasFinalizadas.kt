@@ -72,8 +72,8 @@ class ListaNotasFinalizadas : AppCompatActivity() {
         }
 
         imageButtonSalirHome.setOnClickListener {
-            cerrarSesion()
             toastPerzonalizado(this, "Logout exitoso")
+            cerrarSesion()
         }
 
         imageButtonUsuarioHome.setOnClickListener {

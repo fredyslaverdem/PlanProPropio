@@ -62,8 +62,9 @@ class ListaNotasNoFinalizadas : AppCompatActivity() {
             startActivity(intent)
         }
         imageButtonSalirHome.setOnClickListener {
-            cerrarSesion()
             toastPerzonalizado(this, "Logout exitoso")
+            cerrarSesion()
+
         }
         imageButtonUsuarioHome.setOnClickListener {
             val intent = Intent(this, UsuarioActivity::class.java)
