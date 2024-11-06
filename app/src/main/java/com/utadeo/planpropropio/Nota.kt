@@ -1,9 +1,10 @@
 package com.utadeo.planpropropio
 
 data class Nota(
+    val id: String = "",
     val titulo: String = "",
-    val fechaRegistro: String = "",
-    val fechaFinalizacion: String = "",
     val descripcion: String = "",
-    val icono: Int = R.drawable.agregar_notas_2
+    val fechaRegistro: String = "",
+    val fechaFinalizacion: String = "" ,
+    val finalizado: Boolean = false
 )

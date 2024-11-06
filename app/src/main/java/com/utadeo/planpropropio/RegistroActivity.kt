@@ -10,7 +10,6 @@ import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat

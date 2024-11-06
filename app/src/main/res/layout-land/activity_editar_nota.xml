@@ -128,7 +128,7 @@
 
         <EditText
             android:id="@+id/TituloNotaE"
-            android:layout_width="350dp"
+            android:layout_width="450dp"
             android:layout_height="54dp"
             android:layout_marginTop="16dp"
             android:textColor="#575757"
@@ -141,8 +141,8 @@
 
         <EditText
             android:id="@+id/DescripcionNota"
-            android:layout_width="356dp"
-            android:layout_height="307dp"
+            android:layout_width="450dp"
+            android:layout_height="250dp"
             android:gravity="top"
             android:hint="@string/descripci_n_nota"
             android:inputType="textMultiLine"

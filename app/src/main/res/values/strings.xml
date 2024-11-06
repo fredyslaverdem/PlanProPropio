@@ -49,4 +49,5 @@
     <string name="no_finalizadas_button">no finalizadas</string>
     <string name="finalizadas_button">finalizadas</string>
     <string name="icono_nota">icono nota</string>
+    <string name="finalizadotext">finalizado</string>
 </resources>
