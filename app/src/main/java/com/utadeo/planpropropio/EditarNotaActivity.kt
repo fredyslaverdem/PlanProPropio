@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class EditarNotaActivity : AppCompatActivity() {
@@ -26,6 +27,8 @@ class EditarNotaActivity : AppCompatActivity() {
     private lateinit var notaId: String
     private lateinit var fechaFinalizacionE: TextView
     private lateinit var ButtonBorrarNota: ImageView
+
+    private lateinit var auth: FirebaseAuth
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +49,8 @@ class EditarNotaActivity : AppCompatActivity() {
         val buttonAtrasHome1 = findViewById<ImageView>(R.id.ButtonAtrasHome1)
 
         buttonSalirHome.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            cerrarSesion()
+            toastPerzonalizado(this, "Logout exitoso")
         }
         buttonUsuarioHome.setOnClickListener {
             val intent = Intent(this, UsuarioActivity::class.java)
@@ -81,13 +84,27 @@ class EditarNotaActivity : AppCompatActivity() {
         ButtonBorrarNota.setOnClickListener {
             eliminarNota()
         }
+
+        auth = FirebaseAuth.getInstance()
+    }
+
+    //función para cerrar sesión
+    private fun cerrarSesion() {
+        auth.signOut()
+        irPantallaInicio()
+    }
+
+    // función para redirigir a la pantalla de inicio de sesión
+    private fun irPantallaInicio() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     private fun cargarNota(notaId: String) {
-        toastPerzonalizado(this, "Cargando nota con ID: $notaId")
         db.collection("notas").document(notaId).get().addOnSuccessListener { document ->
             if (document != null && document.exists()) {
-                toastPerzonalizado(this, "Nota encontrada")
                 tituloNotaE.setText(document.getString("titulo"))
                 descripcionNota.setText(document.getString("descripcion"))
                 fechaRegistroE.setText(document.getString("fechaRegistro"))
@@ -112,7 +129,8 @@ class EditarNotaActivity : AppCompatActivity() {
         val fechaFinalizacion = fechaFinalizacionE.text.toString()
         // Verificar el estado del checkbox
         val finalizado = checkboxEditar.isChecked // Obtener el estado del checkbox
-
+        val user = auth.currentUser
+        val userEmail = user?.email
 
         if (titulo.isEmpty() || descripcion.isEmpty()) {
             toastPerzonalizado(this, "Por favor complete todos los campos")
@@ -124,12 +142,14 @@ class EditarNotaActivity : AppCompatActivity() {
             "descripcion" to descripcion,
             "fechaRegistro" to fechaRegistro,
             "fechaFinalizacion" to fechaFinalizacion,
+            "correo" to userEmail,
             "finalizado" to finalizado // Agregar el estado finalizado
         )
 
         db.collection("notas").document(notaId).set(nota).addOnSuccessListener {
             toastPerzonalizado(this, "Nota guardada con éxito")
-            finish() // Close the activity
+            val intent = Intent(this, ListaNotasNoFinalizadas::class.java)
+            startActivity(intent)
         }.addOnFailureListener {
             toastPerzonalizado(this, "Error al guardar la nota")
         }
