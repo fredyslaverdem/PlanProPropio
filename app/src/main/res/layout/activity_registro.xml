@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -200,7 +201,7 @@
         <Button
             android:id="@+id/buttonCrearCuentaRegistro"
             android:layout_width="133dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#2F5596"
             android:text="@string/crearcuenta"

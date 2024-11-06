@@ -105,6 +105,8 @@ class AgregarNotasActivity : AppCompatActivity() {
         val descripcion = descripcion.text.toString()
         val fechaRegistro = fechaRegistro.text.toString()
         val fechaFinalizacion = fechaFinalizacion.text.toString()
+        val user = auth.currentUser
+        val correo = user?.email
 
         if (titulo.isEmpty() || descripcion.isEmpty()) {
             toastPerzonalizado(this, "Completa todos los campos")
@@ -115,6 +117,7 @@ class AgregarNotasActivity : AppCompatActivity() {
             "descripcion" to descripcion,
             "fechaRegistro" to fechaRegistro,
             "fechaFinalizacion" to fechaFinalizacion,
+            "correo" to correo,
             "finalizado" to false
         )
 

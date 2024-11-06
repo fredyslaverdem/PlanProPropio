@@ -25,6 +25,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class ListaNotasFinalizadas : AppCompatActivity() {
     private lateinit var firebasefirestore: FirebaseFirestore
@@ -32,6 +33,8 @@ class ListaNotasFinalizadas : AppCompatActivity() {
     private lateinit var firestoreRecyclerAdapter: FirestoreRecyclerAdapter<Nota, NotaViewHolder>
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var options: FirestoreRecyclerOptions<Nota>
+
+    private lateinit var auth: FirebaseAuth
 
 
 
@@ -86,10 +89,13 @@ class ListaNotasFinalizadas : AppCompatActivity() {
 
         firebasefirestore = FirebaseFirestore.getInstance()
 
-
-
+        // Set up FirestoreRecyclerOptions
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        val userEmail = user?.email
         val query = firebasefirestore.collection("notas")
             .whereEqualTo("finalizado", true)
+            .whereEqualTo("correo", userEmail)
 
 
         options = FirestoreRecyclerOptions.Builder<Nota>()

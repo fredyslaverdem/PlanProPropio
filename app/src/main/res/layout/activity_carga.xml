@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#2F5596"
     android:id="@+id/main"
-    tools:context=".CargaActivity">
+    tools:context=".CargaActivity"
+    android:fitsSystemWindows="true">
 
 
     <ImageView
