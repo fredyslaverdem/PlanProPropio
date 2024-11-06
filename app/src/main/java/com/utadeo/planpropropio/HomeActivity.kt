@@ -29,6 +29,8 @@ class HomeActivity : AppCompatActivity() {
         val imagenAgregarNotas = findViewById<ImageView>(R.id.AgregarNotas1)
         val botonlistaNotas = findViewById<Button>(R.id.buttonMisnotas)
         val imagenlistaNotas = findViewById<ImageView>(R.id.Listanotas2)
+        val imagenHabitos1 = findViewById<ImageView>(R.id.Habitos1)
+        val botonbuttonhabitos1 = findViewById<Button>(R.id.buttonhabitos1)
 
         botonlistaNotas.setOnClickListener {
             val intent = Intent(this, ListaNotasNoFinalizadas::class.java)
@@ -48,6 +50,17 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, AgregarNotasActivity::class.java)
             startActivity(intent)
         }
+
+        imagenHabitos1.setOnClickListener {
+            val intent = Intent(this, Habitos::class.java)
+            startActivity(intent)
+        }
+
+        botonbuttonhabitos1.setOnClickListener {
+            val intent = Intent(this, Habitos::class.java)
+            startActivity(intent)
+        }
+
         window.statusBarColor = backgroundColor
 
         // Configurar el comportamiento del botón "Salir"

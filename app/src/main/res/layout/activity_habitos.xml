@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFondoApp"
+    tools:context=".Habitos">
+
+    <ImageButton
+        android:id="@+id/icon_profile"
+        android:contentDescription="@string/perfil_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usuario_1"
+        style="@style/icon_profile_logged"
+        android:background="@color/transparente_100p"
+        android:layout_height="48dp"
+        android:layout_width="48dp"/>
+
+    <ImageButton
+        android:id="@+id/logout"
+        android:contentDescription="@string/salir"
+        app:layout_constraintEnd_toStartOf="@+id/icon_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/salir_1"
+        style="@style/icon_logout_logged"
+        android:background="@color/transparente_100p"
+        android:layout_height="48dp"
+        android:layout_width="48dp"/>
+
+    <ImageButton
+        android:id="@+id/planpro_icon"
+        android:contentDescription="@string/Logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bloc_notes_2"
+        style="@style/icon_planpro_logged"
+        android:background="@color/transparente_100p"
+        android:layout_height="48dp"
+        android:layout_width="48dp"/>
+
+    <TextView
+        android:id="@+id/titulo_logged"
+        style="@style/text_titulo_logged"
+        android:fontFamily="@font/jsmath_cmti10"
+        android:text="@string/planpro"
+        app:layout_constraintStart_toEndOf="@+id/planpro_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/rounded_rectangle">
+
+        <LinearLayout
+            android:id="@+id/botones_tareas"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/icon_atras"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/atras"
+                app:srcCompat="@drawable/atras_1"
+                android:background="@color/transparente_100p"
+                android:layout_height="48dp"
+                android:layout_width="wrap_content"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1.5"
+                android:text="@string/title_listaHabitos"
+                android:textSize="25sp"
+                android:fontFamily="@font/karma_medium"/>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lista_tareas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/activity_habitos_creados"
+            android:divider="@color/transparente_100p"
+            android:dividerHeight="10.0sp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/botonflotante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="60dp"
+            app:srcCompat="@drawable/bullseye_arrow"
+            android:backgroundTint="#1787DB"
+            style="?attr/floatingActionButtonLargeStyle"
+            app:tint="@color/white"
+            android:contentDescription="@string/botonfloat_crearhabito"/>
+
+    </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

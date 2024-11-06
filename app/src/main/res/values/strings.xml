@@ -50,4 +50,24 @@
     <string name="finalizadas_button">finalizadas</string>
     <string name="icono_nota">icono nota</string>
     <string name="finalizadotext">finalizado</string>
+    <string name="title_listaHabitos">Habitos</string>
+    <string name="tittle_crear_habitos">Crear Habitos</string>
+    <string name="tittle_titulo">Titulo</string>
+    <string name="descripcion_crearhabitos">Descripcion</string>
+    <string name="subtitulodatepicker">Configurar fecha de inicio</string>
+    <string name="fechatemp_crearhabito">--/--/--</string>
+    <string name="boton_crearhabitos">Crear</string>
+    <string name="titulotemp_actividad">Actividad</string>
+    <string name="textotemp_descripcion_actividad">Texto de descripcion</string>
+    <string name="subtitulo_finalizacionactividad">Fecha de finalización</string>
+    <string name="boton_completaractividad">completar</string>
+    <string name="dom_tcheckbox">Dom</string>
+    <string name="lun_tcheckbox">Lun</string>
+    <string name="mar_tcheckbox">Mar</string>
+    <string name="mie_tcheckbox">Mie</string>
+    <string name="jue_tcheckbox">Jue</string>
+    <string name="vie_tcheckbox">Vie</string>
+    <string name="sab_tcheckbox">Sab</string>
+    <string name="botonfloat_crearhabito">Crear habito</string>
+    <string name="perfil_usuario">Perfil de usuario</string>
 </resources>

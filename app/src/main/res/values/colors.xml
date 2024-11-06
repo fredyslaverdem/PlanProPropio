@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorFondoApp">#2F5596</color>
+    <color name="transparente_100p">#00FFFFFF</color>
 </resources>
