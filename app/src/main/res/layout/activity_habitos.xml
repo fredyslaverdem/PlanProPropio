@@ -85,16 +85,12 @@
 
         </LinearLayout>
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lista_tareas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
-            android:padding="10dp"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/activity_habitos_creados"
-            android:divider="@color/transparente_100p"
-            android:dividerHeight="10.0sp"/>
+            tools:listitem="@layout/activity_habitos_creados"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/botonflotante"

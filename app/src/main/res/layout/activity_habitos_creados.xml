@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    app:cardBackgroundColor="@color/transparente_100p"
-    app:cardElevation="0dp"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/item_tareas"
@@ -14,17 +11,17 @@
         android:paddingVertical="10dp"
         android:paddingHorizontal="40dp">
 
-        <Button
+        <TextView
             android:id="@+id/actividad"
+            android:gravity="center"
             android:backgroundTint="@color/colorFondoApp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:text="Actividad 1"
+            android:text="@string/tittle_titulo"
             android:fontFamily="@font/karma_medium"
             android:textSize="20sp"
-            android:layout_centerHorizontal="true"
-            />
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>

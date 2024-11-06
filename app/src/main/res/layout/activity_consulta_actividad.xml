@@ -86,6 +86,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/descripcion_consultarhabito"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="25dp"
             android:layout_height="wrap_content"
