@@ -13,9 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
@@ -110,12 +110,12 @@ class AgregarNotasActivity : AppCompatActivity() {
             toastPerzonalizado(this, "Completa todos los campos")
             return
         }
-
         val note = hashMapOf(
             "titulo" to titulo,
             "descripcion" to descripcion,
             "fechaRegistro" to fechaRegistro,
-            "fechaFinalizacion" to fechaFinalizacion
+            "fechaFinalizacion" to fechaFinalizacion,
+            "finalizado" to false
         )
 
         database.collection("notas")
