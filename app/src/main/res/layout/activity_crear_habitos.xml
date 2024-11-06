@@ -1,162 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFondoApp"
-    tools:context=".Crearhabitos">
-
-    <ImageButton
-        android:id="@+id/icon_profile"
-        android:contentDescription="@string/perfil_usuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/usuario_1"
-        style="@style/icon_profile_logged"
-        android:background="@color/transparente_100p"
-        android:layout_height="48dp"
-        android:layout_width="48dp"/>
-
-    <ImageButton
-        android:id="@+id/logout"
-        android:contentDescription="@string/salir"
-        app:layout_constraintEnd_toStartOf="@+id/icon_profile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/salir_1"
-        style="@style/icon_logout_logged"
-        android:background="@color/transparente_100p"
-        android:layout_height="48dp"
-        android:layout_width="48dp"/>
-
-    <ImageButton
-        android:id="@+id/planpro_icon"
-        android:contentDescription="@string/perfil_usuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bloc_notes_2"
-        style="@style/icon_planpro_logged"
-        android:background="@color/transparente_100p"
-        android:layout_height="48dp"
-        android:layout_width="48dp"/>
-
-    <TextView
-        android:id="@+id/titulo_logged"
-        style="@style/text_titulo_logged"
-        android:fontFamily="@font/jsmath_cmti10"
-        android:text="@string/planpro"
-        app:layout_constraintStart_toEndOf="@+id/planpro_icon"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="90dp"
-        android:background="@drawable/rounded_rectangle">
-
-        <LinearLayout
-            android:id="@+id/botones_tareas"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/icon_atras"
-                android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:contentDescription="@string/atras"
-                app:srcCompat="@drawable/atras_1"
-                android:background="@color/transparente_100p"
-                android:layout_height="48dp"
-                android:layout_width="wrap_content"/>
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="15dp"
-                android:layout_weight="1"
-                android:text="@string/tittle_crear_habitos"
-                android:textSize="25sp"
-                android:fontFamily="@font/karma_medium"/>
-
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/titulo_creacionHabitos"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="25dp"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:layout_marginTop="90dp"
-            android:hint="@string/tittle_titulo"
-            android:fontFamily="@font/karma_medium"
-            android:textSize="25sp"
-            android:paddingHorizontal="25dp" />
-
-        <EditText
-            android:id="@+id/descripcion_crearHabitos"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="25dp"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:fontFamily="@font/karma_medium"
-            android:textSize="20sp"
-            android:paddingHorizontal="25dp"
-            android:hint="@string/descripcion_crearhabitos"
-            android:layout_marginTop="160dp"
-            android:minLines="4"
-            android:maxLines="4"/>
-
-        <TextView
-            android:id="@+id/subtitulocrearhabitos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/subtitulodatepicker"
-            android:fontFamily="@font/karma_medium"
-            android:textSize="25sp"
-            android:layout_marginTop="380dp"
-            android:layout_gravity="center_horizontal"/>
+        android:layout_height="wrap_content"
+        android:background="@color/colorFondoApp"
+        tools:context=".Crearhabitos">
 
         <ImageButton
-            android:id="@+id/imgcaledario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/subtitulodatepicker"
-            app:srcCompat="@drawable/calendario_1"
-            android:backgroundTint="@color/transparente_100p"
-            android:layout_marginTop="450dp"
-            android:layout_marginStart="30dp"
-            android:focusable="false"/>
+            android:id="@+id/icon_profile"
+            android:contentDescription="@string/perfil_usuario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usuario_1"
+            style="@style/icon_profile_logged"
+            android:background="@color/transparente_100p"
+            android:layout_height="48dp"
+            android:layout_width="48dp"/>
+
+        <ImageButton
+            android:id="@+id/logout"
+            android:contentDescription="@string/salir"
+            app:layout_constraintEnd_toStartOf="@+id/icon_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/salir_1"
+            style="@style/icon_logout_logged"
+            android:background="@color/transparente_100p"
+            android:layout_height="48dp"
+            android:layout_width="48dp"/>
+
+        <ImageButton
+            android:id="@+id/planpro_icon"
+            android:contentDescription="@string/perfil_usuario"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bloc_notes_2"
+            style="@style/icon_planpro_logged"
+            android:background="@color/transparente_100p"
+            android:layout_height="48dp"
+            android:layout_width="48dp"/>
 
         <TextView
-            android:id="@+id/fechacrearhabito"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fechatemp_crearhabito"
-            android:fontFamily="@font/karma_medium"
-            android:textSize="40sp"
-            android:layout_marginTop="465dp"
-            android:layout_marginStart="155dp"/>
+            android:id="@+id/titulo_logged"
+            style="@style/text_titulo_logged"
+            android:fontFamily="@font/jsmath_cmti10"
+            android:text="@string/planpro"
+            app:layout_constraintStart_toEndOf="@+id/planpro_icon"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/crearhabitos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/boton_crearhabitos"
-            android:fontFamily="@font/karma_medium"
-            android:textSize="20sp"
-            android:backgroundTint="@color/colorFondoApp"
-            android:layout_marginTop="600dp"
-            android:layout_gravity="center_horizontal"
-            />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_rectangle"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+            <LinearLayout
+                android:id="@+id/botones_tareas"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/icon_atras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparente_100p"
+                    android:contentDescription="@string/atras"
+                    app:srcCompat="@drawable/atras_1" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/karma_medium"
+                    android:text="@string/tittle_crear_habitos"
+                    android:textColor="#575757"
+                    android:textSize="25sp" />
+
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/titulo_creacionHabitos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="90dp"
+                android:fontFamily="@font/karma_medium"
+                android:hint="@string/tittle_titulo"
+                android:inputType="text"
+                android:paddingHorizontal="25dp"
+                android:textColor="#575757"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/descripcion_crearHabitos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="160dp"
+                android:fontFamily="@font/karma_medium"
+                android:hint="@string/descripcion_crearhabitos"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:minLines="4"
+                android:paddingHorizontal="25dp"
+                android:textColor="#575757"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/subtitulocrearhabitos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="380dp"
+                android:fontFamily="@font/karma_medium"
+                android:text="@string/subtitulodatepicker"
+                android:textColor="#575757"
+                android:textSize="25sp" />
+
+            <ImageButton
+                android:id="@+id/imgcaledario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="450dp"
+                android:backgroundTint="@color/transparente_100p"
+                android:contentDescription="@string/subtitulodatepicker"
+                android:focusable="false"
+                app:srcCompat="@drawable/calendario_1" />
+
+            <TextView
+                android:id="@+id/fechacrearhabito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="155dp"
+                android:layout_marginTop="465dp"
+                android:fontFamily="@font/karma_medium"
+                android:text="@string/fechatemp_crearhabito"
+                android:textColor="#575757"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/crearhabitos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="600dp"
+                android:backgroundTint="@color/colorFondoApp"
+                android:fontFamily="@font/karma_medium"
+                android:text="@string/boton_crearhabitos"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </FrameLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

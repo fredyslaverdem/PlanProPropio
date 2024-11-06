@@ -12,15 +12,21 @@
         android:paddingHorizontal="40dp">
 
         <TextView
-            android:id="@+id/actividad"
-            android:gravity="center"
-            android:backgroundTint="@color/colorFondoApp"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="@string/tittle_titulo"
-            android:fontFamily="@font/karma_medium"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true" />
+        android:id="@+id/actividad"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:hint="@string/actividad"
+        android:background="@drawable/rouded_eddittext_background_h"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="16sp"
+        />
 
     </RelativeLayout>
 
