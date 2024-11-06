@@ -41,7 +41,6 @@ class UsuarioActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
     private val userId = auth.currentUser?.uid
     private var correoActual: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
