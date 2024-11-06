@@ -181,7 +181,11 @@ class UsuarioActivity : AppCompatActivity() {
             db.collection("usuarios").document(id).update(usuarioData)
                 .addOnSuccessListener {
                     toastPerzonalizado(this, "Cambios guardados exitosamente")
-
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                }
+                .addOnFailureListener { e ->
+                    toastPerzonalizado(this, "Error al guardar los cambios: ${e.message}")
                 }
         }
     }
