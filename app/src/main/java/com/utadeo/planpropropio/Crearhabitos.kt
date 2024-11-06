@@ -1,6 +1,7 @@
 package com.utadeo.planpropropio
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -10,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
@@ -35,11 +38,30 @@ class Crearhabitos : AppCompatActivity() {
             insets
         }
 
+        // Difiniciendo variable para el layout principlal y asi el fondo se configure con ui del dispositivo.
+        val mainLayout = findViewById<ConstraintLayout>(R.id.main)
+
+        // Obtener el color de fondo y aplicarlo a la barra de estado
+        val backgroundColor = (mainLayout.background as? ColorDrawable)?.color
+            ?: ContextCompat.getColor(this, R.color.colorFondoApp) // Color por defecto
+
+        window.statusBarColor = backgroundColor
+
         val planpro_icon = findViewById<ImageButton>(R.id.planpro_icon)
         val logout = findViewById<ImageButton>(R.id.logout)
         val icon_profile = findViewById<ImageButton>(R.id.icon_profile)
         val icon_atras = findViewById<ImageButton>(R.id.icon_atras)
         val imgcalendario = findViewById<ImageButton>(R.id.imgcaledario)
+
+        logout.setOnClickListener {
+            toastPerzonalizado(this, "Logout exitoso")
+            cerrarSesion()
+        }
+
+        icon_profile.setOnClickListener {
+            startActivity(Intent(this,UsuarioActivity::class.java))
+
+        }
 
         icon_atras.setOnClickListener {
             startActivity(Intent(this,Habitos::class.java))
@@ -65,6 +87,18 @@ class Crearhabitos : AppCompatActivity() {
 
     }
 
+    private fun cerrarSesion() {
+        auth.signOut()
+        irALogin()
+    }
+
+    private fun irALogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+
     //Fragmento para calendario de Crear Habitos
     private fun showDatePickerDialog() {
         val datePicker = DatePickerFragment { day, month, year -> onDateSelected(day, month, year) }
@@ -82,6 +116,8 @@ class Crearhabitos : AppCompatActivity() {
         val titulo = tituloHabito.text.toString()
         val descripcion = descripcionHabito.text.toString()
         val fechaInicioHabito = fechaInicioHabito.text.toString()
+        val user = auth.currentUser
+        val correo = user?.email
 
         if (titulo.isEmpty() || descripcion.isEmpty()) {
             toastPerzonalizado(this, "Completa todos los campos")
@@ -90,6 +126,7 @@ class Crearhabitos : AppCompatActivity() {
         val habito = hashMapOf(
             "titulo" to titulo,
             "descripcion" to descripcion,
+            "correo" to correo,
             "fechaInicioHabito" to fechaInicioHabito
         )
 

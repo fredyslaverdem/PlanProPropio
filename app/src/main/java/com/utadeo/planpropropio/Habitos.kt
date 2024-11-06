@@ -2,6 +2,7 @@ package com.utadeo.planpropropio
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class Habitos : AppCompatActivity() {
@@ -24,6 +26,8 @@ class Habitos : AppCompatActivity() {
     private lateinit var firestoreRecyclerAdapter: FirestoreRecyclerAdapter<Habito, HabitoViewHolder>
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var options: FirestoreRecyclerOptions<Habito>
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +38,8 @@ class Habitos : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        FirebaseFirestore.setLoggingEnabled(true)
+
 
         val logout = findViewById<ImageButton>(R.id.logout)
         val icon_profile = findViewById<ImageButton>(R.id.icon_profile)
@@ -45,7 +51,8 @@ class Habitos : AppCompatActivity() {
         }
 
         logout.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            toastPerzonalizado(this, "Logout exitoso")
+            cerrarSesion()
         }
 
         botonflotante.setOnClickListener {
@@ -63,8 +70,25 @@ class Habitos : AppCompatActivity() {
         recyclerViewHabitos.layoutManager = linearLayoutManager
 
         firebasefirestore = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
 
+        val currentUser = auth.currentUser
+        val correo = currentUser?.email
         val query = firebasefirestore.collection("habitos")
+            .whereEqualTo("correo", correo)
+
+        query.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w("Firestore Error", "Error al cargar los hábitos", e)
+                return@addSnapshotListener
+            }
+            if (snapshot != null && !snapshot.isEmpty) {
+                Log.d("Firestore", "Documentos obtenidos: ${snapshot.size()}")
+            } else {
+                Log.d("Firestore", "No se encontraron documentos.")
+            }
+        }
+
 
         options = FirestoreRecyclerOptions.Builder<Habito>()
             .setQuery(query, Habito::class.java)
@@ -76,13 +100,14 @@ class Habitos : AppCompatActivity() {
         firestoreRecyclerAdapter = object : FirestoreRecyclerAdapter<Habito, HabitoViewHolder>(options) {
             override fun onBindViewHolder(holder: HabitoViewHolder, position: Int, model: Habito) {
                 holder.bind(model)
+                Log.d("Firestore Adapter", "Mostrando hábito: ${model.titulo}")
                 val habitoId = snapshots.getSnapshot(position).id
-                toastPerzonalizado(this@Habitos, "Habito ID: $habitoId")
 
                 holder.itemView.setOnClickListener {
-                    val intent = Intent(holder.itemView.context, detalles_actividad::class.java)
+                    val intent = Intent(holder.itemView.context, DetalleHabitosActivity::class.java)
                     intent.putExtra("HABITO_ID", habitoId)
                     holder.itemView.context.startActivity(intent)
+                    finish()
                 }
             }
 
@@ -97,7 +122,18 @@ class Habitos : AppCompatActivity() {
         recyclerViewHabitos.adapter = firestoreRecyclerAdapter
     }
 
+    // función para el cierre de sesión
+    private fun cerrarSesion() {
+        auth.signOut()
+        irALogin()
+    }
 
+    private fun irALogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
 
     override fun onStart() {
         super.onStart()
