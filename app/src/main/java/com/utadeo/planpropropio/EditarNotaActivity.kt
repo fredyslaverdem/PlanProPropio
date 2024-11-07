@@ -173,7 +173,8 @@ class EditarNotaActivity : AppCompatActivity() {
             // Proceder con la eliminación si el usuario confirma
             db.collection("notas").document(notaId).delete().addOnSuccessListener {
                 toastPerzonalizado(this, "Nota eliminada con éxito")
-                finish() // Cerrar la actividad después de eliminar la nota
+                val intent = Intent(this, ListaNotasFinalizadas::class.java)
+                startActivity(intent) // Cerrar la actividad después de eliminar la nota
             }.addOnFailureListener {
                 toastPerzonalizado(this, "Error al eliminar la nota")
             }
